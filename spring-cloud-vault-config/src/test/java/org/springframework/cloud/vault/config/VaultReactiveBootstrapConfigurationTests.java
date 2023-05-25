@@ -52,9 +52,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class VaultReactiveBootstrapConfigurationTests {
 
-	private ApplicationContextRunner contextRunner = new ApplicationContextRunner()
-			.withConfiguration(AutoConfigurations.of(VaultReactiveBootstrapConfiguration.class))
-			.withAllowBeanDefinitionOverriding(true);
+	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
+.withConfiguration(AutoConfigurations.of(VaultReactiveBootstrapConfiguration.class))
+.withAllowBeanDefinitionOverriding(true);
 
 	@Test
 	public void shouldConfigureTemplate() {
@@ -132,7 +132,7 @@ public class VaultReactiveBootstrapConfigurationTests {
 		this.contextRunner
 				.withPropertyValues("spring.cloud.vault.kv.enabled=false", "spring.cloud.vault.token=foo",
 						"spring.cloud.vault.session.lifecycle.enabled=false")
-				.withBean("vaultTokenSupplier", VaultTokenSupplier.class, () -> Mono::empty)
+				.withBean("vaultTokenSupplier", VaultTokenSupplier.class, Mono::empty)
 				.withBean("taskSchedulerWrapper", VaultBootstrapConfiguration.TaskSchedulerWrapper.class,
 						() -> new VaultBootstrapConfiguration.TaskSchedulerWrapper(new ThreadPoolTaskScheduler()))
 				.run(context -> {
@@ -149,7 +149,7 @@ public class VaultReactiveBootstrapConfigurationTests {
 				.withPropertyValues("spring.cloud.vault.kv.enabled=false", "spring.cloud.vault.token=foo",
 						"spring.cloud.vault.session.lifecycle.refresh-before-expiry=11s",
 						"spring.cloud.vault.session.lifecycle.expiry-threshold=12s")
-				.withBean("vaultTokenSupplier", VaultTokenSupplier.class, () -> Mono::empty)
+				.withBean("vaultTokenSupplier", VaultTokenSupplier.class, Mono::empty)
 				.withBean("taskSchedulerWrapper", VaultBootstrapConfiguration.TaskSchedulerWrapper.class,
 						() -> new VaultBootstrapConfiguration.TaskSchedulerWrapper(new ThreadPoolTaskScheduler()))
 				.run(context -> {

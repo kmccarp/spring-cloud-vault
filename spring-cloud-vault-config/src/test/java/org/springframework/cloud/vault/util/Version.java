@@ -85,8 +85,8 @@ public final class Version implements Comparable<Version> {
 				try {
 					intParts[i] = Integer.parseInt(input);
 				}
-				catch (IllegalArgumentException o_O) {
-					throw new IllegalArgumentException(String.format(VERSION_PARSE_ERROR, input, version), o_O);
+				catch (IllegalArgumentException oO) {
+					throw new IllegalArgumentException(String.format(VERSION_PARSE_ERROR, input, version), oO);
 				}
 			}
 		}
@@ -183,7 +183,7 @@ public final class Version implements Comparable<Version> {
 	@Override
 	public String toString() {
 
-		List<Integer> digits = new ArrayList<Integer>();
+		List<Integer> digits = new ArrayList<>();
 		digits.add(this.major);
 		digits.add(this.minor);
 

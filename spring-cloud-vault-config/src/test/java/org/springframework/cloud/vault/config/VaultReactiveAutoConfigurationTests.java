@@ -135,7 +135,7 @@ public class VaultReactiveAutoConfigurationTests {
 		this.contextRunner
 				.withPropertyValues("spring.cloud.vault.kv.enabled=false", "spring.cloud.vault.token=foo",
 						"spring.cloud.vault.session.lifecycle.enabled=false")
-				.withBean("vaultTokenSupplier", VaultTokenSupplier.class, () -> Mono::empty)
+				.withBean("vaultTokenSupplier", VaultTokenSupplier.class, Mono::empty)
 				.withBean("taskSchedulerWrapper", VaultAutoConfiguration.TaskSchedulerWrapper.class,
 						() -> new VaultAutoConfiguration.TaskSchedulerWrapper(new ThreadPoolTaskScheduler()))
 				.run(context -> {
@@ -152,7 +152,7 @@ public class VaultReactiveAutoConfigurationTests {
 				.withPropertyValues("spring.cloud.vault.kv.enabled=false", "spring.cloud.vault.token=foo",
 						"spring.cloud.vault.session.lifecycle.refresh-before-expiry=11s",
 						"spring.cloud.vault.session.lifecycle.expiry-threshold=12s")
-				.withBean("vaultTokenSupplier", VaultTokenSupplier.class, () -> Mono::empty)
+				.withBean("vaultTokenSupplier", VaultTokenSupplier.class, Mono::empty)
 				.withBean("taskSchedulerWrapper", VaultAutoConfiguration.TaskSchedulerWrapper.class,
 						() -> new VaultAutoConfiguration.TaskSchedulerWrapper(new ThreadPoolTaskScheduler()))
 				.run(context -> {
@@ -173,7 +173,7 @@ public class VaultReactiveAutoConfigurationTests {
 				.withPropertyValues("spring.cloud.vault.kv.enabled=false", "spring.cloud.vault.token=foo",
 						"spring.cloud.vault.session.lifecycle.enabled=false")
 				.withUserConfiguration(ReactiveEndpointProviderConfiguration.class)
-				.withBean("vaultTokenSupplier", VaultTokenSupplier.class, () -> Mono::empty)
+				.withBean("vaultTokenSupplier", VaultTokenSupplier.class, Mono::empty)
 				.withBean("taskSchedulerWrapper", VaultAutoConfiguration.TaskSchedulerWrapper.class,
 						() -> new VaultAutoConfiguration.TaskSchedulerWrapper(new ThreadPoolTaskScheduler()))
 				.run(context -> {

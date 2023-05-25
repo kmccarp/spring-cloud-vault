@@ -104,6 +104,8 @@ class ConsulBackendMetadata implements LeasingSecretBackendMetadata, Application
 
 	public static class RebindConsulEvent extends ApplicationEvent {
 
+		private static final long serialVersionUID = 1;
+
 		RebindConsulEvent(Object source) {
 			super(source);
 		}

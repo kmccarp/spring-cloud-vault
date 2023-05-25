@@ -442,18 +442,13 @@ class ClientAuthenticationFactory {
 
 			AtomicReference<AwsCredentials> once = new AtomicReference<>(firstAccess);
 
-			return new AwsCredentialsProvider() {
+			return () -> {
 
-				@Override
-				public AwsCredentials resolveCredentials() {
-
-					if (once.compareAndSet(firstAccess, null)) {
-						return firstAccess;
-					}
-
-					return backingCredentialsProvider.resolveCredentials();
+				if (once.compareAndSet(firstAccess, null)) {
+					return firstAccess;
 				}
 
+				return backingCredentialsProvider.resolveCredentials();
 			};
 		}
 
