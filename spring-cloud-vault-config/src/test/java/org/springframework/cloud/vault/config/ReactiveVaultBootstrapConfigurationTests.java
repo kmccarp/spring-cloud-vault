@@ -35,8 +35,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class ReactiveVaultBootstrapConfigurationTests {
 
-	private ApplicationContextRunner contextRunner = new ApplicationContextRunner().withConfiguration(
-			AutoConfigurations.of(VaultBootstrapConfiguration.class, VaultReactiveBootstrapConfiguration.class));
+	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner().withConfiguration(
+	AutoConfigurations.of(VaultBootstrapConfiguration.class, VaultReactiveBootstrapConfiguration.class));
 
 	@Test
 	public void shouldConfigureWithoutAuthentication() {
