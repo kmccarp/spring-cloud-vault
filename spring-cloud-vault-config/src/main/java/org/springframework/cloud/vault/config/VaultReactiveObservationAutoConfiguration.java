@@ -45,8 +45,8 @@ public class VaultReactiveObservationAutoConfiguration {
 	@Bean
 	@ConditionalOnSingleCandidate(ObservationRegistry.class)
 	public WebClientCustomizer observationVaultWebClientCustomizer(ObservationRegistry observationRegistry) {
-		return webClientBuilder -> new ObservationWebClientCustomizer(observationRegistry,
-				new DefaultClientRequestObservationConvention()).customize(webClientBuilder);
+		return new ObservationWebClientCustomizer(observationRegistry,
+				new DefaultClientRequestObservationConvention())::customize;
 	}
 
 }
