@@ -44,7 +44,7 @@ import static org.mockito.Mockito.when;
  */
 public class DiscoveryClientVaultBootstrapConfigurationTests {
 
-	private ApplicationContextRunner contextRunner = new ApplicationContextRunner().withConfiguration(
+	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner().withConfiguration(
 			AutoConfigurations.of(DiscoveryClientVaultBootstrapConfiguration.class, VaultBootstrapConfiguration.class));
 
 	@Test
